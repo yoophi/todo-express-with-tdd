@@ -3,9 +3,9 @@ const Todo = require("./todo");
 
 describe("constructor 를 이용한 Todo 모델 생성", () => {
   test("Todo 모델 초기화", () => {
-    code = uuid();
-    title = "Task";
-    is_completed = true;
+    const code = uuid();
+    const title = "Task";
+    const is_completed = true;
     const todo = new Todo({
       id: code,
       title,
@@ -21,9 +21,9 @@ describe("constructor 를 이용한 Todo 모델 생성", () => {
 
 describe("Factory 를 통한 Todo 모델 생성", () => {
   test("정상적인 Todo 모델 생성", () => {
-    code = uuid();
-    title = "Task";
-    is_completed = true;
+    const code = uuid();
+    const title = "Task";
+    const is_completed = true;
     const todo = Todo.factory({
       id: code,
       title,
@@ -36,9 +36,9 @@ describe("Factory 를 통한 Todo 모델 생성", () => {
   });
 
   test("title 값은 string 형식이어야 한다", () => {
-    code = uuid();
-    title = {};
-    is_completed = true;
+    const code = uuid();
+    const title = {};
+    const is_completed = true;
     expect(() => {
       const todo = Todo.factory({
         id: code,
@@ -49,9 +49,9 @@ describe("Factory 를 통한 Todo 모델 생성", () => {
   });
 
   test("title 값은 공백으로만 구성될 수 없다", () => {
-    code = uuid();
-    title = " ";
-    is_completed = true;
+    const code = uuid();
+    const title = " ";
+    const is_completed = true;
     expect(() => {
       const todo = Todo.factory({
         id: code,
@@ -62,9 +62,9 @@ describe("Factory 를 통한 Todo 모델 생성", () => {
   });
 
   test("title 값 공백은 제거된다", () => {
-    code = uuid();
-    title = "hello ";
-    is_completed = true;
+    const code = uuid();
+    const title = "hello ";
+    const is_completed = true;
     const todo = Todo.factory({
       id: code,
       title,
@@ -77,8 +77,8 @@ describe("Factory 를 통한 Todo 모델 생성", () => {
   });
 
   test("is_completed 값의 기본값은 false 이다", () => {
-    code = uuid();
-    title = "Task";
+    const code = uuid();
+    const title = "Task";
     const todo = Todo.factory({
       id: code,
       title,
@@ -92,9 +92,9 @@ describe("Factory 를 통한 Todo 모델 생성", () => {
 
 describe("모델을 plain object 로 변경", () => {
   test("Todo 모델을 plain object 로 변경할 수 있다", () => {
-    code = uuid();
-    title = "Task";
-    is_completed = true;
+    const code = uuid();
+    const title = "Task";
+    const is_completed = true;
     const todo = Todo.factory({
       id: code,
       title,
@@ -110,9 +110,9 @@ describe("모델을 plain object 로 변경", () => {
 
 describe("모델 비교", () => {
   test("모델간의 일치 여부를 계산할 수 있다", () => {
-    code = uuid();
-    title = "Task";
-    is_completed = true;
+    const code = uuid();
+    const title = "Task";
+    const is_completed = true;
     const todoA = Todo.factory({
       id: code,
       title,
