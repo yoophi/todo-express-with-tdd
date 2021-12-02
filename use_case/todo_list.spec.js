@@ -16,15 +16,28 @@ describe("Todo 목록 조회", () => {
       id: uuid(),
       title: "Task 3",
     });
-    const domainTodos = [task1, task2, task3];
+    const todoEntities = [task1, task2, task3];
 
     repo = {};
-    repo.list = jest.fn(() => domainTodos);
+    repo.list = jest.fn(() => todoEntities);
 
     todo_list_use_case = new TodoListUseCase(repo);
     result = todo_list_use_case.execute();
 
-    expect(result).toBe(domainTodos);
+    expect(result).toBe(todoEntities);
     expect(repo.list.mock.calls.length).toBe(1);
+  });
+
+  test("repo.list 호출 중 Exception 처리", () => {
+    repo = {};
+    repo.list = jest.fn(() => {
+      throw Error("some error");
+    });
+
+    todo_list_use_case = new TodoListUseCase(repo);
+    result = todo_list_use_case.execute();
+
+    expect(repo.list.mock.calls.length).toBe(1);
+    expect(result).toStrictEqual({ message: "some error" });
   });
 });
