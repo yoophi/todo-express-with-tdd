@@ -29,8 +29,10 @@ describe("Memory Repository", () => {
   test("repo.get() 호출", () => {
     const todoObjects = getTodosObjectWithStaticId();
     const todo = Todo.factory(todoObjects[0]);
+    const todo2 = Todo.factory(todoObjects[1]);
     const repo = new MemRepo(todoObjects);
     expect(repo.get("1")).toEqual(todo);
+    expect(repo.get("2")).toEqual(todo2);
     expect(repo.get("invalid-todo-id")).toEqual(null);
   });
 });
