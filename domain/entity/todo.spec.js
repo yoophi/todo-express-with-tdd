@@ -128,6 +128,8 @@ describe("모델 비교", () => {
       title: "Another Task",
       is_completed,
     });
+    const _ = require("lodash");
+    expect(_.isEqual(todoA, todoB)).toBe(true);
     expect(todoA.isEqual(todoB)).toBe(true);
     expect(todoA.isEqual(todoC)).toBe(false);
   });
