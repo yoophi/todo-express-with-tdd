@@ -4,6 +4,7 @@ const program = require("commander");
 require("console.table");
 
 const packageJson = require("./package.json");
+const MemRepo = require("./repository/memrepo");
 
 program.version(packageJson.version, "-v, --version");
 
@@ -13,13 +14,20 @@ program
   .alias("list")
   .alias("todos")
   .action((type, options) => {
-    console.log("print todos.");
-    console.log("");
-    console.table([
+    const initialData = [
       { id: 1, title: "Task 1", is_completed: false },
       { id: 2, title: "Task 2", is_completed: true },
       { id: 3, title: "Task 3", is_completed: false },
-    ]);
+    ];
+    const MemRepo = require("./repository/memrepo");
+    const TodoListUseCase = require("./use_case/todo_list");
+    const repo = new MemRepo(initialData);
+    const uc = new TodoListUseCase(repo);
+    const resp = uc.execute();
+
+    console.log("print todos.");
+    console.log("");
+    console.table(resp.map((todoEntity) => todoEntity.toObject()));
   });
 
 program
