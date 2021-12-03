@@ -12,8 +12,8 @@ describe("Todo 상세 조회", () => {
     repo = {};
     repo.get = jest.fn(() => todoEntities[0]);
 
-    todo_list_use_case = new TodoDetailUseCase(repo);
-    result = todo_list_use_case.execute("1");
+    todo_detail_use_case = new TodoDetailUseCase(repo);
+    result = todo_detail_use_case.execute("1");
 
     expect(result).toBe(todoEntities[0]);
     expect(repo.get.mock.calls.length).toBe(1);
