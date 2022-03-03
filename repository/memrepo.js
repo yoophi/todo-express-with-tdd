@@ -1,3 +1,4 @@
+const { nanoid } = require("nanoid");
 const Todo = require("../domain/entity/todo");
 
 class MemRepo {
@@ -18,6 +19,12 @@ class MemRepo {
     } catch (e) {
       return null;
     }
+  }
+
+  create(title) {
+    const newTodo = { id: nanoid(), title, is_completed: false };
+    this.todoObjects = [...this.todoObjects, newTodo];
+    return true;
   }
 }
 
