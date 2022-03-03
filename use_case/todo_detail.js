@@ -7,9 +7,7 @@ class TodoDetailUseCase {
     try {
       return this.repo.get(todoId);
     } catch (e) {
-      return {
-        message: e.message,
-      };
+      return false;
     }
   }
 }
