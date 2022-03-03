@@ -4,7 +4,7 @@ const program = require("commander");
 require("console.table");
 
 const packageJson = require("./package.json");
-const MemRepo = require("./repository/memrepo");
+const MemRepo = require("./repository/mem_repo");
 
 program.version(packageJson.version, "-v, --version");
 
@@ -19,7 +19,7 @@ program
       { id: 2, title: "Task 2", is_completed: true },
       { id: 3, title: "Task 3", is_completed: false },
     ];
-    const MemRepo = require("./repository/memrepo");
+    const MemRepo = require("./repository/mem_repo");
     const TodoListUseCase = require("./use_case/todo_list");
     const repo = new MemRepo(initialData);
     const uc = new TodoListUseCase(repo);

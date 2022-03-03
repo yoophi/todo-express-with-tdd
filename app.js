@@ -3,7 +3,7 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-var MemRepo = require("./repository/memrepo");
+var MemRepo = require("./repository/mem_repo");
 
 var indexRouter = require("./routes/index");
 var todosRouter = require("./routes/todos");
